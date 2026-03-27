@@ -25,6 +25,9 @@ def main():
 
     now = datetime.now(ZoneInfo("America/Sao_Paulo"))
     window_start = now - timedelta(minutes=6)
+    print("CHAT_ID:", CHAT_ID)
+    print("TOKEN:", TOKEN)
+
 
     for _, row in df.iterrows():
         post_time = datetime.strptime(row["datetime"], "%Y-%m-%d %H:%M")
