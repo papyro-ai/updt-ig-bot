@@ -29,6 +29,8 @@ def main():
     for _, row in df.iterrows():
         post_time = datetime.strptime(row["datetime"], "%Y-%m-%d %H:%M")
         post_time = post_time.replace(tzinfo=ZoneInfo("America/Sao_Paulo"))
+        print("Agora:", now)
+        print("Post:", post_time)
 
         if window_start <= post_time <= now:
             send_post(row["image_url"], row["caption"])
