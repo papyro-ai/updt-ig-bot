@@ -24,7 +24,7 @@ def main():
     df = pd.read_csv(SHEET_URL)
 
     now = datetime.now(ZoneInfo("America/Sao_Paulo"))
-    window_start = now - timedelta(minutes=3)
+    window_start = now - timedelta(minutes=6)
 
     for _, row in df.iterrows():
         post_time = datetime.strptime(row["datetime"], "%Y-%m-%d %H:%M")
