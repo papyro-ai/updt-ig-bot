@@ -14,11 +14,15 @@ def send_post(image_url, caption):
     
     img = requests.get(image_url).content
     
-    requests.post(
-        url,
-        data={"chat_id": CHAT_ID, "caption": caption},
-        files={"photo": img}
-    )
+    response = requests.post(url, data={
+         "chat_id": CHAT_ID,
+          "caption": caption
+    }, files={
+        "photo": requests.get(image_url).content
+    })
+
+    print("STATUS:", response.status_code)
+    print("RESPOSTA:", response.text)
 
 def main():
     df = pd.read_csv(SHEET_URL)
