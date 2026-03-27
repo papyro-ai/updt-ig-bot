@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
@@ -8,7 +10,7 @@ CHAT_ID = os.getenv("CHAT_ID")
 SHEET_URL = os.getenv("SHEET_URL")
 
 def send_post(image_url, caption):
-    url = f"https://api.telegram.org/bot8312725978:AAEdPQ1LqVEIf1TuVmNiZbaRsZvTTzGFARM/sendPhoto"
+    url = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
     
     img = requests.get(image_url).content
     
@@ -21,7 +23,7 @@ def send_post(image_url, caption):
 def main():
     df = pd.read_csv(SHEET_URL)
 
-    now = datetime.now()
+    now = datetime.now(ZoneInfo("America/Sao_Paulo"))
     window_start = now - timedelta(minutes=1)
 
     for _, row in df.iterrows():
