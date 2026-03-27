@@ -15,7 +15,7 @@ def send_post(image_url, caption):
     img = requests.get(image_url).content
     
     response = requests.post(url, data={
-         "chat_id": CHAT_ID,
+         "chat_id": 777370385,
           "caption": caption
     }, files={
         "photo": requests.get(image_url).content
